@@ -4,6 +4,7 @@
  * Copyright 2016 @huxpro
  * Licensed under Apache 2.0
  * Register service worker.
+ * 只需要在网站根目录下放入当前 sw.js 文件
  * ========================================================== */
 
 const RUNTIME = 'docsify'
