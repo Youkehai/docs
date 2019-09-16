@@ -2,7 +2,12 @@ FROM node:10-alpine
 
 RUN npm i docsify-cli -g --registry=https://registry.npm.taobao.org
 
-ONBUILD COPY src /srv/docsify/docs
-ONBUILD WORKDIR /srv/docsify
+COPY src /srv/docsify/docs
+
+WORKDIR /srv/docsify
+
+ENV PORT 3000
+
+EXPOSE $PORT
 
 CMD ["/usr/local/bin/docsify", "serve", "docs"]
