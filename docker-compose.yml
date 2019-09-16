@@ -8,4 +8,4 @@ services:
     container_name: common-docsify
     restart: always
     ports:
-      - 8003:80
+      - 8003:3000
