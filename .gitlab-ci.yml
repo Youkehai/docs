@@ -1,19 +1,19 @@
-variables:
-
+image: docker:dind
 stages:
   - deploy
-
-.deploy_template: &deploy_template
+docker-deploy:
   stage: deploy
+  # 执行Job内容
   script:
-    - docker-compose build 
-    - docker-compose up -d
-  after_script:
-   # - docker images | grep none | awk '{print $3}' | xargs docker rmi -f
-  only:
-    - master
-
-docs-deploy-1:
-  <<: *deploy_template
+    # 通过Dockerfile生成cicd-docsify镜像
+    - docker build -t cicd-docsify .
+    # 删除已经在运行的容器
+    - if [ $(docker ps -aq --filter name=cicd-docsify) ]; then docker rm -f cicd-docsify;fi
+    # 通过镜像启动容器，并把本机8001端口映射到容器8001端口
+    - docker run -d -p 8003:3000 --name cicd-docsify cicd-docsify
   tags:
-    - task
+    # 执行Job的服务器
+    - dev
+  only:
+    # 只有在master分支才会执行
+    - master
