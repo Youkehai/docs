@@ -6,12 +6,8 @@ stages:
 .deploy_template: &deploy_template
   stage: deploy
   script:
-    - docker-compose build common-docsify .
+    - docker-compose build 
     - docker-compose up -d
-    # 删除已经在运行的容器
-    - if [ $(docker ps -aq --filter name=common-docsify) ]; then docker rm -f common-docsify;fi
-    # 通过镜像启动容器，并把本机8001端口映射到容器8001端口
-    - docker run -d -p 8003:8003 --name common-docsify common-docsify
   after_script:
    # - docker images | grep none | awk '{print $3}' | xargs docker rmi -f
   only:
