@@ -10,5 +10,6 @@
 - 运维手册
   - [监控报警事项](RGP-MESSAGE/04.devops-guide/monitor_alarm.md)
 
-- OKR
-  - [OKR 目标](RGP-MESSAGE/05.okr-summary/okr.md)
+- 入门
+  - [快速开始](RGP-MESSAGE/05.okr-summary/okr.md)
+  - [多页文档](RGP-MESSAGE/05.okr-summary/okr2.md)
