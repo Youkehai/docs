@@ -16,4 +16,4 @@ stages:
 docs-deploy-1:
   <<: *deploy_template
   tags:
-    - tag1
+    - task
