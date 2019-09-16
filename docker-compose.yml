@@ -6,6 +6,6 @@ services:
     build:
       context: .
     container_name: common-docsify
-    restart: always
+    #restart: always
     ports:
       - 8003:3000
