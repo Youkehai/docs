@@ -5,6 +5,5 @@
 <p>
 	<a href="#/RGP-MESSAGE/01.introduction/background.md">消息队列</a>
    
-    </br>
-    <a style="display:none;">none</a>
+    
 </p>
