@@ -1,4 +1,3 @@
-image: docker:dind
 stages:
   - deploy
 docker-deploy:
@@ -13,7 +12,7 @@ docker-deploy:
     - docker run -d -p 8003:3000 --name cicd-docsify cicd-docsify
   tags:
     # 执行Job的服务器
-    - dev
+    - task
   only:
     # 只有在master分支才会执行
     - master
