@@ -2,7 +2,7 @@ FROM node:10-alpine
 
 RUN npm i docsify-cli -g --registry=https://registry.npm.taobao.org
 
-COPY src /srv/docsify
+COPY . /srv/docsify
 
 WORKDIR /srv/docsify
 
