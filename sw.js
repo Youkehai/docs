@@ -7,7 +7,7 @@
  * 只需要在网站根目录下放入当前 sw.js 文件
  * ========================================================== */
 
-const RUNTIME = 'docsify'
+/*const RUNTIME = 'docsify'
 const HOSTNAME_WHITELIST = [
   self.location.hostname,
   'fonts.gstatic.com',
@@ -37,22 +37,22 @@ const getFixedUrl = (req) => {
   return url.href
 }
 
-/**
+*//**
  *  @Lifecycle Activate
  *  New one activated when old isnt being used.
  *
  *  waitUntil(): activating ====> activated
- */
+ *//*
 self.addEventListener('activate', event => {
   event.waitUntil(self.clients.claim())
 })
 
-/**
+*//**
  *  @Functional Fetch
  *  All network requests are being intercepted here.
  *
  *  void respondWith(Promise<Response> r)
- */
+ *//*
 self.addEventListener('fetch', event => {
   // Skip some of cross-origin requests, like those for Google Analytics.
   if (HOSTNAME_WHITELIST.indexOf(new URL(event.request.url).hostname) > -1) {
@@ -71,14 +71,34 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       Promise.race([fetched.catch(_ => cached), cached])
         .then(resp => resp || fetched)
-        .catch(_ => { /* eat any errors */ })
+        .catch(_ => {  eat any errors  })
     )
 
     // Update the cache with the version we fetched (only for ok status)
     event.waitUntil(
       Promise.all([fetchedCopy, caches.open(RUNTIME)])
         .then(([response, cache]) => response.ok && cache.put(event.request, response))
-        .catch(_ => { /* eat any errors */ })
+        .catch(_ => {  eat any errors  })
     )
   }
-})
+})*/
+
+importScripts(
+  'https://storage.googleapis.com/workbox-cdn/releases/3.6.1/workbox-sw.js'
+)
+
+const ALLOWED_HOSTS = [
+  // The domain to load markdown files
+  location.host,
+  // The domain to load docute
+  'unpkg.com'
+]
+
+const matchCb = ({ url, event }) => {
+  return event.request.method === 'GET' && ALLOWED_HOSTS.includes(url.host)
+}
+
+workbox.routing.registerRoute(
+  matchCb,
+  workbox.strategies.networkFirst()
+)

@@ -33,9 +33,12 @@
         <div id="app"></div>
         <script>
           
-          if (typeof navigator.serviceWorker !== 'undefined') {
-            navigator.serviceWorker.register('sw.js')
-          } 
+//           if (typeof navigator.serviceWorker !== 'undefined') {
+//             navigator.serviceWorker.register('sw.js')
+//           } 
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/sw.js')
+			}
         
         	window.$docsify = {
        	      auto2top: true, //当路线改变时，滚动到屏幕的顶部。
