@@ -5,7 +5,7 @@
  * Licensed under Apache 2.0
  * Register service worker.
  * 只需要在网站根目录下放入当前 sw.js 文件
- * ========================================================== */
+ * ========================================================== 
 
 const RUNTIME = 'docsify'
 const HOSTNAME_WHITELIST = [
@@ -36,22 +36,22 @@ const getFixedUrl = (req) => {
   return url.href
 }
 
-/**
+*//**
  *  @Lifecycle Activate
  *  New one activated when old isnt being used.
  *
  *  waitUntil(): activating ====> activated
- */
+ *//*
 self.addEventListener('activate', event => {
   event.waitUntil(self.clients.claim())
 })
 
-/**
+*//**
  *  @Functional Fetch
  *  All network requests are being intercepted here.
  *
  *  void respondWith(Promise<Response> r)
- */
+ *//*
 self.addEventListener('fetch', event => {
   // Skip some of cross-origin requests, like those for Google Analytics.
   if (HOSTNAME_WHITELIST.indexOf(new URL(event.request.url).hostname) > -1) {
@@ -70,14 +70,81 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       Promise.race([fetched.catch(_ => cached), cached])
         .then(resp => resp || fetched)
-        .catch(_ => { /* eat any errors */ })
+        .catch(_ => {  eat any errors  })
     )
 
     // Update the cache with the version we fetched (only for ok status)
     event.waitUntil(
       Promise.all([fetchedCopy, caches.open(RUNTIME)])
         .then(([response, cache]) => response.ok && cache.put(event.request, response))
-        .catch(_ => { /* eat any errors */ })
+        .catch(_ => {  eat any errors  })
     )
   }
-})
+})*/
+
+'use strict'
+let cacheName = 'pwa-docsify'; // 缓存名字
+let imgCacheName = 'pwa-img-docsify';
+let filesToCache = [
+	  self.location.hostname,
+	  'fonts.gstatic.com',
+	  'fonts.googleapis.com',
+	  'unpkg.com'
+	]
+
+self.addEventListener('install', function(e) {
+    e.waitUntil(
+        // 安装服务者时，对需要缓存的文件进行缓存
+        caches.open(cacheName).then(function(cache) {
+            return cache.addAll(filesToCache);
+        })
+    );
+});
+
+self.addEventListener('fetch', (e) => {
+    // 判断地址是不是需要实时去请求，是就继续发送请求
+	if (HOSTNAME_WHITELIST.indexOf(new URL(event.request.url).hostname) > -1) {
+		
+//		// Stale-while-revalidate
+//	    // similar to HTTP's stale-while-revalidate: https://www.mnot.net/blog/2007/12/12/stale
+//	    // Upgrade from Jake's to Surma's: https://gist.github.com/surma/eb441223daaedf880801ad80006389f1
+//	    const cached = caches.match(event.request)
+//	    const fixedUrl = getFixedUrl(event.request)
+//	    const fetched = fetch(fixedUrl, { cache: 'no-store' })
+//	    const fetchedCopy = fetched.then(resp => resp.clone())
+//
+//	    // Call respondWith() with whatever we get first.
+//	    // If the fetch fails (e.g disconnected), wait for the cache.
+//	    // If there’s nothing in cache, wait for the fetch.
+//	    // If neither yields a response, return offline pages.
+//	    event.respondWith(
+//	      Promise.race([fetched.catch(_ => cached), cached])
+//	        .then(resp => resp || fetched)
+//	        .catch(_ => {  eat any errors  })
+//	    )
+//
+//	    // Update the cache with the version we fetched (only for ok status)
+//	    event.waitUntil(
+//	      Promise.all([fetchedCopy, caches.open(RUNTIME)])
+//	        .then(([response, cache]) => response.ok && cache.put(event.request, response))
+//	        .catch(_ => {  eat any errors  })
+//	    )
+	    
+        e.respondWith(
+            caches.open(imgCacheName).then(function(cache){
+                 return fetch(e.request).then(function (response){
+                    cache.put(e.request.url, response.clone()); // 每请求一次缓存更新一次新加载的图片
+                    return response;
+                });
+            })
+        );
+    } else {
+        e.respondWith(
+            // 匹配到缓存资源，就从缓存中返回数据
+            caches.match(e.request).then(function (response) {
+                return response || fetch(e.request);
+            })
+        );
+    }
+
+});
