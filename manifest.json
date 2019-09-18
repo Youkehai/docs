@@ -3,17 +3,17 @@
     "name": "文档管理",   
 	  "icons": [ 
         {
-            "src": "src/assets/_media/favicon.ico",
+            "src": "src/assets/_media/favicon.png",
             "type": "image/png",
             "sizes": "48x48"
         },
         {
-            "src": "src/assets/_media/favicon.ico",
+            "src": "src/assets/_media/favicon.png",
             "type": "image/png",
             "sizes": "96x96"
         },
         {
-            "src": "src/assets/_media/favicon.ico",
+            "src": "src/assets/_media/favicon.png",
             "type": "image/png",
             "sizes": "192x192"
         }
