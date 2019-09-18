@@ -33,19 +33,19 @@
 
         <div id="app"></div>
         <script>
-          
-        if ('serviceWorker' in navigator && 'PushManager' in window) {
-            navigator.serviceWorker.register(sw.js)
-            .then(function(swReg) {
-                swRegistration = swReg;
-            }).catch(function(error) {
-                console.error('Service Worker Error', error);
-                });
-         } else {
-             console.warn('Push messaging is not supported');
-         }
-        
-        
+        	console.log("loading...")
+	        if ('serviceWorker' in navigator && 'PushManager' in window) {
+	            navigator.serviceWorker.register(sw.js)
+	            .then(function(swReg) {
+	                swRegistration = swReg;
+	            }).catch(function(error) {
+	                console.error('Service Worker Error', error);
+	                });
+	         } else {
+	             console.warn('Push messaging is not supported');
+	         }
+        </script>
+        <script>
         	window.$docsify = {
        	      auto2top: true, //当路线改变时，滚动到屏幕的顶部。
        	      coverpage: true, //激活封面功能。如果为true，则会从中加载_coverpage.md。
