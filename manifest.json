@@ -1,0 +1,25 @@
+{
+    "short_name": "文档",
+    "name": "文档管理",   
+	  "icons": [ 
+        {
+            "src": "src/assets/_media/favicon.ico",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "src/assets/_media/favicon.ico",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "src/assets/_media/favicon.ico",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ],
+    "background_color": "#2196F3", 
+   "theme_color": "#2196F3", 
+   "display": "standalone", 
+   "start_url": "index.html?launcher=true" 
+}
