@@ -73,8 +73,8 @@
        	      plugins: [
        	        function(hook, vm) {
        	          hook.beforeEach(function (html) {
-       	            var url = 'https://github.com/celizi/docs/master/' + vm.route.file
-       	            var editHtml = '[:memo: 编辑文档](' + url + ')\n'
+       	            var url = 'https://github.com/celizi/docs/blob/master/' + vm.route.file
+       	            var editHtml = '  [:memo: 编辑文档](' + url + ')\n'
        	            return html
        	              + '\n----\n'
        	              + '最后修改时间： {docsify-updated} '
