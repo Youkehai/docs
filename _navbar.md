@@ -1,8 +1,8 @@
 * 整体架构
-  * [总技术架构说明](quickstart.md)
-  * [总业务架构说明](more-pages.md)
+  * [总技术架构说明](src/一、总技术架构说明/技术总览.md)
+  * [总业务架构说明](src/二、总业务架构说明/平台总览.md)
 * 开发流程标准
-  * [开发标准和规范](quickstart.md)
+  * [开发标准和规范](quickstart.md) 
   * [业务项目开发流程](more-pages.md)
 * 日常工作规范
   * [业务项目需求规范手册](quickstart.md)

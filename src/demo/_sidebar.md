@@ -1,3 +1,0 @@
-- 入门
-  - [快速开始](src/demo/01.quickstart/quickstart.md)
-  - [多页文档](src/demo/01.quickstart/more-page.md)
