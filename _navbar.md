@@ -1,10 +1,14 @@
-<a href="#/src/demo/01.quickstart/quickstart.md">总技术架构说明</a>
-<a href="#/src/demo/01.quickstart/quickstart.md">总业务架构说明</a>
-<a href="#/src/demo/01.quickstart/quickstart.md">开发标准和规范</a>
-<a href="#/src/demo/01.quickstart/quickstart.md">业务项目开发流程</a>
-<a href="#/src/demo/01.quickstart/quickstart.md">业务项目需求规范手册</a>
-<a href="#/src/demo/01.quickstart/quickstart.md">后端业务项目开发手册</a>
-<a href="#/src/demo/01.quickstart/quickstart.md">前端业务项目开发手册</a>
-<a href="#/src/demo/01.quickstart/quickstart.md">测试业务项目规范手册</a>
-<a href="#/src/demo/01.quickstart/quickstart.md">部署和实施标准与规范</a>
-<a href="#/src/demo/01.quickstart/quickstart.md">附件</a>
+* 整体架构
+  * [总技术架构说明](quickstart.md)
+  * [总业务架构说明](more-pages.md)
+* 开发流程标准
+  * [开发标准和规范](quickstart.md)
+  * [业务项目开发流程](more-pages.md)
+* 日常工作规范
+  * [业务项目需求规范手册](quickstart.md)
+  * [后端业务项目开发手册](more-pages.md)
+  * [前端业务项目开发手册](quickstart.md)
+  * [测试业务项目规范手册](more-pages.md)
+  * [部署和实施标准与规范](quickstart.md)
+* 其他说明
+  * [附件](quickstart.md)
