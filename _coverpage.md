@@ -1,4 +1,4 @@
-![logo](src/assets/_media/icon.svg)
+
 
 <h1>技术字典</h1>
 
